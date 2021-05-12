@@ -1,0 +1,72 @@
+TECH USED:
+
+Node v14.5.0, 
+Express v6.0.0, 
+MongoDB v5.12.7
+bcryptjs ^2.4.3
+cookie-parser v1.4.5
+cors v2.8.5
+dotenv v9.0.1
+express-jwt v6.0.0
+express-validator": 6.11.1
+
+
+Database Models:
+1. User: Holds the information of the user. Data stored are Name, email, password,
+role and blogs created. The "role" value is 0 for normal user and "1" for admin.
+
+2. Blogs: This is to store the information of the blog. It includes Title, author 
+and content of the blog.
+
+Routes:
+
+Auth related routes : /api/auth
+
+1. /signup(POST) : It takes name, email, password and role (by default 0) and create a user.
+2. /signin (POST): It takes email and password and authenticate the user against the data 
+stored in the database. Also stores a JWT token in the cookie named "token"
+
+Middlewares in Auth:
+
+isSignedIn : This middleware checks whether a user in logged in or not. It populates
+req.profile with the information of currently logged in user which can be further used
+anywhere in the controllers.
+
+isAuthorized: This middleware is to check whether the user is admin and helps in
+protecting the routes specific to Admin only.
+
+
+
+user related routes: /api/user
+
+/getUser(GET) : It return the details of the currently logged in user and is used to make 
+the profile page of the currently logged in user.
+
+/user/:userId (GET): This route returns the user of the specific ID and can be used to make 
+the view of the profile page of the user other than the logged in user.
+
+/user/:userId (PUT) : This route is used to update the info the user.
+
+Blog related Routes: 
+
+/blog (GET) : Fetches the list of all the blogs from the database.
+
+/createBlog (POST) : Created a new blog with the given title and content. Protected 
+by isAuthorized middleware so that only admin can create a blog.
+
+/updateBlog (PUT): To update the already created blog. Only admin can modify the blogs.
+
+/deleteBlog/:blogId (DELETE) : Delete the blog with the given Id from the database.
+Only The admin can delete the blog.
+
+
+CLIENT SIDE:
+
+Tech used:
+React v17.0.2
+react-bootstrap v1.5.2
+react-dom v17.0.2
+react-router-dom v5.2.0
+react-scripts v4.0.3
+react-select v4.3.1
+
