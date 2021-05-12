@@ -70,3 +70,17 @@ react-router-dom v5.2.0
 react-scripts v4.0.3
 react-select v4.3.1
 
+Folder Structure:
+* All the differenct components are locatated at src/components.
+* Proper naming conventions are followed.
+* All the api call are stored in utilities. Auth call are stored utilities/index
+and blog related calls are in utilities/blogCalls.js
+* Each component has two files, .js and .css , which includes javascript and css part 
+respectively.
+
+Some Addtional Info:
+* For some parts, bootstrap is used so .css may not be present or might be empty.
+* Code is scalable and properly structured.
+* Different routes are protected by using React-router.
+
+
